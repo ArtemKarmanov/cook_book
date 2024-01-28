@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,11 +82,11 @@ WSGI_APPLICATION = 'cook_book.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cook_book',
-        'USER': 'artem',
-        'PASSWORD': '29041997',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': getenv("NAME_DB"),
+        'USER': getenv("USER_DB"),
+        'PASSWORD': getenv("PASSWORD_DB"),
+        'HOST': getenv("HOST_DB"),
+        'PORT': getenv("PORT_DB")
     }
 }
 

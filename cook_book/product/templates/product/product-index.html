@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Информация о продукте</title>
+    </head>
+    <body>
+        {% if product %}
+            <h1>Продукт «{{ product.title }}»</h1>
+            <p>Краткая информация:</p>
+            <ul>
+                <li>Идентификатор: {{ product.id }}</li>
+                <li>Кол-во приготовлений: {{ product.cooked }}</li>
+            </ul>
+            {% if recipes %}
+                <p>Продукт не используется в следующих рецептах (либо используется меньше 10 грамм):</p>
+                <table border="1">
+                    <tr>
+                        <td>ID</td>
+                        <td>РЕЦЕПТ</td>
+                    </tr>
+                    {% for recipe in recipes %}
+                        <tr>
+                            <td>{{ recipe.id }}</td>
+                            <td>{{ recipe.title }}</td>
+                        </tr>
+                    {% endfor %}
+            {% else %}
+                <p>Продукт используется во всех рецептах</p>
+            {% endif %}
+        {% else %}
+                <p>Продукт не найден</p>
+        {% endif %}
+
+        </table>
+    </body>
+</html>
